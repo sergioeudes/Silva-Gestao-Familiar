@@ -1,0 +1,7 @@
+streamlit>=1.54   # necessário para st.bottom (barra de navegação inferior)
+sqlalchemy>=2.0
+pandas>=2.0
+jinja2>=3.0
+plotly>=5.0
+python-dateutil>=2.8
+pytest>=7.0

@@ -1,0 +1,78 @@
+==============================================================================
+RELATÓRIO DE MIGRAÇÃO
+==============================================================================
+
+Registros: usuários 2, contas 6, cartões 8, investimentos 6, lançamentos 1119
+Lançamentos no banco novo: 1119  -> OK
+
+--- 1) SALDO POR CONTA (antigo x novo) ---
+  SANTANDER  01037477-9          antigo          R$ 0,00  novo          R$ 0,00  dif    0 cent  OK
+  C6 - 21591119-9                antigo          R$ 7,07  novo          R$ 7,07  dif    0 cent  OK
+  MERCADO PAGO - 4999906302-1    antigo     R$ 77.395,75  novo     R$ 77.395,75  dif    0 cent  OK
+  CAIXA - C/C 569369082-9        antigo          R$ 0,00  novo          R$ 0,00  dif    0 cent  OK
+  CONTA XP                       antigo         R$ 76,46  novo         R$ 76,46  dif    0 cent  OK
+  BANCO DO BRASIL                antigo          R$ 0,00  novo          R$ 0,00  dif    0 cent  OK
+
+--- 2) CARTÕES: itens x pagamentos ---
+  SANTANDER UNIQUE - MC    itens    R$ 5.937,59 (dif    0c)   pago    R$ 2.997,18 (dif    0c)  OK
+  SANTANDER ELITE - MC     itens    R$ 1.548,12 (dif    0c)   pago    R$ 1.032,08 (dif    0c)  OK
+  C6 BLACK - MC            itens   R$ 44.092,85 (dif    2c)   pago   R$ 14.931,36 (dif    0c)  OK
+  MERCADO PAGO - VISA      itens   R$ 16.134,01 (dif    9c)   pago    R$ 8.590,51 (dif   18c)  OK
+  CAIXA VISA INFINITY      itens      R$ 710,95 (dif    0c)   pago      R$ 436,47 (dif    0c)  OK
+  XP VISA INFINITY         itens    R$ 2.266,20 (dif    0c)   pago    R$ 1.333,42 (dif    0c)  OK
+  CARTÃO AZUL VISA         itens   R$ 94.353,01 (dif    0c)   pago        R$ 0,00 (dif    0c)  OK
+  XP VISA                  itens    R$ 2.105,09 (dif    0c)   pago        R$ 0,00 (dif    0c)  OK
+
+--- 3) Pagamentos de fatura: 44 lançamentos; maior diferença entre o valor debitado na conta e o valor abatido nas faturas: 5 centavo(s)
+
+--- 4) INVESTIMENTOS ---
+  antigo R$ 245.486,55  novo R$ 245.486,55  OK
+
+--- 5) SÉRIES: 104 séries (parcelas/recorrências) reconstruídas
+
+--- 6) FATURAS: itens que MUDARAM de mês em relação ao app antigo (regra corrigida) ---
+  SANTANDER UNIQUE - MC         0 de   58 itens
+  SANTANDER ELITE - MC         12 de   12 itens
+  C6 BLACK - MC                 0 de  144 itens
+  MERCADO PAGO - VISA         238 de  238 itens
+  CAIXA VISA INFINITY          10 de   10 itens
+  XP VISA INFINITY              0 de   48 itens
+  CARTÃO AZUL VISA            449 de  456 itens
+  XP VISA                      38 de   39 itens
+
+--- 7) ITENS COM DATA EDITADA À MÃO (regra aplicada à data que você deixou; vale conferir): 16 ---
+  id 65: MURTOSA - MATERIAIS (8/10) (data 2026-11-14)
+  id 94: PRESENTE ARTHUR - NIVER (4/5) (data 2026-11-13)
+  id 95: PRESENTE ARTHUR - NIVER (5/5) (data 2026-12-13)
+  id 686: COMPRA - TERCEIROS (11/21) (data 2026-12-02)
+  id 687: COMPRA - TERCEIROS (12/21) (data 2027-01-02)
+  id 688: COMPRA - TERCEIROS (13/21) (data 2027-02-02)
+  id 689: COMPRA - TERCEIROS (14/21) (data 2027-03-02)
+  id 690: COMPRA - TERCEIROS (15/21) (data 2027-04-02)
+  id 691: COMPRA - TERCEIROS (16/21) (data 2027-05-02)
+  id 692: COMPRA - TERCEIROS (17/21) (data 2027-06-02)
+  id 693: COMPRA - TERCEIROS (18/21) (data 2027-07-02)
+  id 694: COMPRA - TERCEIROS (19/21) (data 2027-08-02)
+  id 695: COMPRA - TERCEIROS (20/21) (data 2027-09-02)
+  id 696: COMPRA - TERCEIROS (21/21) (data 2027-10-02)
+  id 879: CREUZA ALIMENTAÇÃO - DESPESA PESSOAL PAT (data 2026-08-21)
+
+--- 8) FATURAS EM ABERTO NO APP NOVO (hoje 19/09/2026) ---
+  cartão                     faturas abertas        restante  já vencidas    valor vencido
+  SANTANDER UNIQUE - MC                    8     R$ 2.940,41            0          R$ 0,00
+  SANTANDER ELITE - MC                     4       R$ 516,04            1        R$ 129,01
+  C6 BLACK - MC                            9    R$ 29.161,49            1     R$ 14.283,25
+  MERCADO PAGO - VISA                     16     R$ 7.543,50            0          R$ 0,00
+  CAIXA VISA INFINITY                      2       R$ 274,48            0          R$ 0,00
+  XP VISA INFINITY                         6       R$ 932,78            1        R$ 188,85
+  CARTÃO AZUL VISA                        32    R$ 94.353,01           12     R$ 36.863,76
+  XP VISA                                 19     R$ 2.105,09            8      R$ 1.459,62
+  TOTAL VENCIDO E NÃO PAGO EM CARTÕES: R$ 52.924,49
+
+--- 9) PONTOS QUE PRECISAM DA SUA ATENÇÃO ---
+  * Competência = mês ANTERIOR ao vencimento nos cartões: MERCADO PAGO - VISA
+  * Ajuste de +2 centavo(s) no pagamento de fatura #493 da conta SANTANDER  01037477-9 (compensa arredondamentos).
+  * Pagamento sem vínculo automático (id 1081, 2026-09-03, R$ 121,88): 'PAGAMENTO FATURA SANTADER MC ELITE'. Mantido como saída na conta (saldo correto), mas NÃO abate nenhuma fatura.
+  * Itens marcados como pagos sem pagamento correspondente: 0
+
+Verificação numérica: TUDO OK(verificação via SQLAlchemy ignorada: ModuleNotFoundError)

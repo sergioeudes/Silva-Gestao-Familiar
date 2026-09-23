@@ -1,0 +1,8 @@
+# Copie este arquivo para  .streamlit/config.toml  (na mesma pasta do appfin.py) e reinicie o app.
+[theme]
+base = "light"
+primaryColor = "#2563eb"
+backgroundColor = "#f8fafc"
+secondaryBackgroundColor = "#ffffff"
+textColor = "#0f172a"
+font = "sans serif"
